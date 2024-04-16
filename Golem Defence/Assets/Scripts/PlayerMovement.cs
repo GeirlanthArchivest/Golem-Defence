@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public static int damage = 1;
     public Transform shootingPoint;
     public GameObject bulletPrefab;
+    public GameObject block;
 
     float horizontal;
     float vertical;
@@ -39,6 +40,28 @@ public class PlayerMovement : MonoBehaviour
                 nextFireTime = Time.time + fireRate;
             }
         }
+
+        if (Time.time >= nextFireTime)
+        {
+            if (Input.GetKey(KeyCode.K))
+            {
+                shootBullet2();
+                nextFireTime = Time.time + fireRate;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            // Activate the object
+            block.SetActive(true);
+        }
+
+        // Check if the activation key is released
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            // Deactivate the object
+            block.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
@@ -48,6 +71,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void shootBullet()
+    {
+        var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
+    }
+
+    private void shootBullet2()
     {
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;

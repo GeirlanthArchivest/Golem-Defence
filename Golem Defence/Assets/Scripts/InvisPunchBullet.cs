@@ -10,4 +10,18 @@ public class InvisPunchBullet : MonoBehaviour
     {
         Destroy(gameObject, life);
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+
+        }
+        else if (collision.collider.tag != "Enemy" && collision.collider.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
