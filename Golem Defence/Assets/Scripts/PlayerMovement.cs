@@ -41,14 +41,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Time.time >= nextFireTime)
+       /* if (Time.time >= nextFireTime)
         {
             if (Input.GetKey(KeyCode.K))
             {
                 shootBullet2();
                 nextFireTime = Time.time + fireRate;
             }
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Check if the activation key is released
-        if (Input.GetKeyUp(KeyCode.L))
+        else if (Input.GetKeyUp(KeyCode.L))
         {
             // Deactivate the object
             block.SetActive(false);
@@ -76,9 +76,9 @@ public class PlayerMovement : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
     }
 
-    private void shootBullet2()
+    /*private void shootBullet2()
     {
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
-    }
+    }*/
 }
