@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public int runSpeed = 1;
     public int bulletSpeed;
+    public static int damage = 1;
     public Transform shootingPoint;
     public GameObject bulletPrefab;
 
