@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject block;
     public bool isBlocking = false;
     public bool isPlayer1 = false;
+    public int currentHealth;
+    public int maxHealth;
+    public Healthbar Healthbar;
+
 
     float horizontal;
     float vertical;
@@ -25,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        Healthbar.SetMaxHealth(maxHealth);
+
         if (gameObject.CompareTag("Player"))
         {
             isPlayer1 = true;
@@ -92,16 +98,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+        Healthbar.SetHealth(currentHealth);
 
-
-       /* if (Time.time >= nextFireTime)
-        {
-            if (Input.GetKey(KeyCode.K))
-            {
-                shootBullet2();
-                nextFireTime = Time.time + fireRate;
-            }
-        }*/
+        /* if (Time.time >= nextFireTime)
+         {
+             if (Input.GetKey(KeyCode.K))
+             {
+                 shootBullet2();
+                 nextFireTime = Time.time + fireRate;
+             }
+         }*/
 
 
     }
