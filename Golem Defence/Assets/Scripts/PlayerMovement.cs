@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject block;
     public bool isBlocking = false;
+    public bool isPlayer1 = false;
 
     float horizontal;
     float vertical;
@@ -24,14 +25,30 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (gameObject.CompareTag("Player"))
+        {
+            isPlayer1 = true;
+        }
+        else
+        {
+            isPlayer1 = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (isPlayer1 == true)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
+        else if (isPlayer1 == false)
+        {
+            horizontal = Input.GetAxis("Horizontal Arrow Keys");
+            vertical = Input.GetAxis("Vertical Arrow Keys");
+        }
+
 
         if (Time.time >= nextFireTime && isBlocking != true)
         {
