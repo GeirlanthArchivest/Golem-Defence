@@ -42,22 +42,57 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
+
+            if (Time.time >= nextFireTime && isBlocking != true)
+            {
+                if (Input.GetKey(KeyCode.J))
+                {
+                    shootBullet();
+                    nextFireTime = Time.time + fireRate;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                block.SetActive(true);
+                isBlocking = true;
+            }
+
+            else if (Input.GetKeyUp(KeyCode.L))
+            {
+                block.SetActive(false);
+                isBlocking = false;
+            }
         }
         else if (isPlayer1 == false)
         {
             horizontal = Input.GetAxis("Horizontal Arrow Keys");
             vertical = Input.GetAxis("Vertical Arrow Keys");
-        }
 
-
-        if (Time.time >= nextFireTime && isBlocking != true)
-        {
-            if (Input.GetKey(KeyCode.Space))
+            if (Time.time >= nextFireTime && isBlocking != true)
             {
-                shootBullet();
-                nextFireTime = Time.time + fireRate;
+                if (Input.GetKey(KeyCode.Keypad5))
+                {
+                    shootBullet();
+                    nextFireTime = Time.time + fireRate;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad6))
+            {
+                block.SetActive(true);
+                isBlocking = true;
+            }
+
+            else if (Input.GetKeyUp(KeyCode.Keypad6))
+            {
+                block.SetActive(false);
+                isBlocking = false;
             }
         }
+
+
+
 
        /* if (Time.time >= nextFireTime)
         {
@@ -68,20 +103,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }*/
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            // Activate the object
-            block.SetActive(true);
-            isBlocking = true;
-        }
 
-        // Check if the activation key is released
-        else if (Input.GetKeyUp(KeyCode.L))
-        {
-            // Deactivate the object
-            block.SetActive(false);
-            isBlocking = false;
-        }
     }
 
     private void FixedUpdate()
