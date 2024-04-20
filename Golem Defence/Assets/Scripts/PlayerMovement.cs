@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform shootingPoint;
     public GameObject bulletPrefab;
     public GameObject block;
+    public bool isBlocking = false;
 
     float horizontal;
     float vertical;
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        if (Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime && isBlocking != true)
         {
             if (Input.GetKey(KeyCode.Space))
             {
@@ -54,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Activate the object
             block.SetActive(true);
+            isBlocking = true;
         }
 
         // Check if the activation key is released
@@ -61,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Deactivate the object
             block.SetActive(false);
+            isBlocking = false;
         }
     }
 
