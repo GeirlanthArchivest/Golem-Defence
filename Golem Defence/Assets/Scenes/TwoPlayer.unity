@@ -814,8 +814,8 @@ MonoBehaviour:
   currentHealth: 0
   maxhealth: 5
   speed: 3
-  chaseDistance: 10
-  stopDistance: 1
+  chaseDistance: 20
+  stopDistance: 2.5
   target: {fileID: 269805816}
 --- !u!1 &1127800635
 GameObject:
