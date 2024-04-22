@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
     public Healthbar Healthbar;
+    public bool isRotated = false;
 
 
     float horizontal;
@@ -49,6 +50,15 @@ public class PlayerMovement : MonoBehaviour
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
 
+            if (horizontal < 0)
+            {
+                RotateObject(); // Rotate left
+            }
+            else if (horizontal > 0)
+            {
+                ResetRotation(); // Reset rotation
+            }
+
             if (Time.time >= nextFireTime && isBlocking != true)
             {
                 if (Input.GetKey(KeyCode.J))
@@ -74,6 +84,15 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontal = Input.GetAxis("Horizontal Arrow Keys");
             vertical = Input.GetAxis("Vertical Arrow Keys");
+
+            if (horizontal < 0)
+            {
+                RotateObject(); // Rotate left
+            }
+            else if (horizontal > 0)
+            {
+                ResetRotation(); // Reset rotation
+            }
 
             if (Time.time >= nextFireTime && isBlocking != true)
             {
@@ -116,6 +135,24 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 movement = new Vector3(horizontal * runSpeed, vertical * runSpeed, 0.0f);
         transform.position = transform.position + movement * Time.deltaTime;
+    }
+
+    void RotateObject()
+    {
+        if (!isRotated)
+        {
+            transform.Rotate(0, 180, 0); // Rotate by 180 degrees on the Y-axis
+            isRotated = true; // Set the flag to true
+        }
+    }
+
+    void ResetRotation()
+    {
+        if (isRotated)
+        {
+            transform.Rotate(0, -180, 0); // Reset rotation by rotating back by 180 degrees on the Y-axis
+            isRotated = false; // Reset the flag to false
+        }
     }
 
     private void shootBullet()

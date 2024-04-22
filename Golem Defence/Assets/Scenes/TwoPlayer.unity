@@ -412,12 +412,13 @@ MonoBehaviour:
   bulletSpeed: 10
   shootingPoint: {fileID: 1475970980}
   bulletPrefab: {fileID: 3202272100959336385, guid: 8fbbcf6649274274ba083e594dcc65e2, type: 3}
-  block: {fileID: 0}
+  block: {fileID: 1651883458}
   isBlocking: 0
   isPlayer1: 0
   currentHealth: 0
   maxHealth: 100
   Healthbar: {fileID: 2106816389}
+  isRotated: 0
   fireRate: 0.5
 --- !u!61 &269805820
 BoxCollider2D:
@@ -731,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1101188877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -856,6 +857,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   Healthbar: {fileID: 0}
+  isRotated: 0
   fireRate: 0.5
 --- !u!4 &1127800637
 Transform:
@@ -1352,6 +1354,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   Healthbar: {fileID: 1788772603}
+  isRotated: 0
   fireRate: 0.5
 --- !u!212 &1685877300
 SpriteRenderer:
