@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25094227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.26, y: 0, z: 0}
+  m_LocalPosition: {x: -9.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -635,9 +635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6e15321a759b4f88cff38a451afeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Transform: {fileID: 269805818}
-  player2Transform: {fileID: 1685877301}
-  followSpeed: 5
+  targets:
+  - {fileID: 269805818}
+  - {fileID: 1685877301}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &796440221
 GameObject:
   m_ObjectHideFlags: 0

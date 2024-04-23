@@ -4,27 +4,38 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player1Transform;
-    public Transform player2Transform;
-    public float followSpeed = 5f;
+    public List<Transform> targets;
 
-    private Vector3 cameraOffset;
+    public Vector3 offset;
 
-    void Start()
+    private void LateUpdate()
     {
-        // Calculate the initial offset between the camera and the midpoint of the players
-        cameraOffset = (player1Transform.position + player2Transform.position) / 2f - transform.position;
+        if (targets.Count == 0)
+        {
+            return;
+        }
+
+        Vector3 centerPoint = GetCenterPoint();
+
+        Vector3 newPosition = centerPoint + offset;
+
+        transform.position = newPosition;
     }
 
-    void FixedUpdate()
+    Vector3 GetCenterPoint()
     {
-        // Calculate the midpoint between the two players
-        Vector3 midpoint = (player1Transform.position + player2Transform.position) / 2f;
+        if ( targets.Count == 1)
+        {
+            return targets[0].position;
+        }
 
-        // Set the target position for the camera
-        Vector3 targetPosition = midpoint - cameraOffset;
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        for (int i = 0; i < targets.Count; i++)
+        {
+            bounds.Encapsulate(targets[i].position);
+        }
 
-        // Smoothly move the camera towards the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        return bounds.center;
     }
+
 }
