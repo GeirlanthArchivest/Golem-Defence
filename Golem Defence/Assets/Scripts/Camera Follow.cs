@@ -8,6 +8,10 @@ public class CameraFollow : MonoBehaviour
 
     public Vector3 offset;
 
+    public float smoothTime = .5f;
+
+    private Vector3 velocity;
+
     private void LateUpdate()
     {
         if (targets.Count == 0)
@@ -19,7 +23,7 @@ public class CameraFollow : MonoBehaviour
 
         Vector3 newPosition = centerPoint + offset;
 
-        transform.position = newPosition;
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
     }
 
     Vector3 GetCenterPoint()
