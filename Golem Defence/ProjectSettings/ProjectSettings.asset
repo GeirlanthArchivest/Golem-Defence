@@ -710,8 +710,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Golem Defence
-  metroPackageVersion: 
+  metroPackageName: GolemDefence
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -719,7 +719,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Golem Defence
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Golem Defence
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
