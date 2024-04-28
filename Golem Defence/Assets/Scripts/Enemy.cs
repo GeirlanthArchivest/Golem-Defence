@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public int bulletSpeed;
     public int maxhealth = 5;
+    public static int damage = 5;
     public float speed;
     public float chaseDistance;
     public float stopDistance;

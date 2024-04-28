@@ -88,6 +88,24 @@ public class Player2Movement : MonoBehaviour
         transform.position = transform.position + movement * Time.deltaTime;
     }
 
+    void OnCollisionEnter2D(Collision2D collisioninfo)
+    {
+        if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("EnemyBullet"))
+        {
+            TakeDamage(Enemy.damage);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Healthbar.SetHealth(currentHealth);
+            Destroy(gameObject);
+        }
+    }
+
     void RotateObject()
     {
         if (!isRotated)

@@ -81,6 +81,23 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    void OnCollisionEnter2D(Collision2D collisioninfo)
+    {
+        if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("EnemyBullet"))
+        {
+            TakeDamage(Enemy.damage);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Healthbar.SetHealth(currentHealth);
+            Destroy(gameObject);
+        }
+    }
 
     private void FixedUpdate()
     {

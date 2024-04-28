@@ -1036,7 +1036,7 @@ MonoBehaviour:
   stopDistance: 2.4
   inRange: 0
   shootingPoint: {fileID: 308339462}
-  bulletPrefab: {fileID: 3202272100959336385, guid: 8fbbcf6649274274ba083e594dcc65e2, type: 3}
+  bulletPrefab: {fileID: 3202272100959336385, guid: 0a68264313cce9a48b976f28a21c8b41, type: 3}
   targets:
   - {fileID: 269805816}
   - {fileID: 1685877297}
