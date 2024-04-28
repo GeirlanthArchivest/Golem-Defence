@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     private float nextFireTime = 0f;
     public float fireRate = 0.5f;
 
+    private bool isRotated = false;
+
     private void Start()
     {
         currentHealth = maxhealth;
@@ -48,6 +50,15 @@ public class Enemy : MonoBehaviour
         {
             shootBullet();
             nextFireTime = Time.time + fireRate;
+        }
+
+        if (targetDistance > stopDistance && currentTarget.transform.position.x < transform.position.x)
+        {
+            RotateObject();
+        }
+        else if (targetDistance > stopDistance && currentTarget.transform.position.x > transform.position.x)
+        {
+            ResetRotation();
         }
     }
 
@@ -92,6 +103,24 @@ public class Enemy : MonoBehaviour
                 currentTarget = potentialTarget;
                 break;
             }
+        }
+    }
+
+    void RotateObject()
+    {
+        if (!isRotated)
+        {
+            transform.Rotate(0, -180, 0); // Rotate by 180 degrees on the Y-axis
+            isRotated = true; // Set the flag to true
+        }
+    }
+
+    void ResetRotation()
+    {
+        if (isRotated)
+        {
+            transform.Rotate(0, 180, 0); // Reset rotation by rotating back by 180 degrees on the Y-axis
+            isRotated = false; // Reset the flag to false
         }
     }
 
