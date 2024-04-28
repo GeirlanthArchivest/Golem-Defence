@@ -19,6 +19,9 @@ public class CameraFollow : MonoBehaviour
             return;
         }
 
+        // Remove destroyed targets
+        targets.RemoveAll(t => t == null);
+
         Vector3 centerPoint = GetCenterPoint();
 
         Vector3 newPosition = centerPoint + offset;
@@ -28,7 +31,7 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 GetCenterPoint()
     {
-        if ( targets.Count == 1)
+        if (targets.Count == 1)
         {
             return targets[0].position;
         }
@@ -36,10 +39,12 @@ public class CameraFollow : MonoBehaviour
         var bounds = new Bounds(targets[0].position, Vector3.zero);
         for (int i = 0; i < targets.Count; i++)
         {
-            bounds.Encapsulate(targets[i].position);
+            if (targets[i] != null)
+            {
+                bounds.Encapsulate(targets[i].position);
+            }
         }
 
         return bounds.center;
     }
-
 }

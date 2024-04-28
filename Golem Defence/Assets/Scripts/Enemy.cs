@@ -5,22 +5,36 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int currentHealth;
+    public int bulletSpeed;
     public int maxhealth = 5;
     public float speed;
     public float chaseDistance;
     public float stopDistance;
-    public GameObject target;
+    public bool inRange = false;
+    public Transform shootingPoint;
+    public GameObject bulletPrefab;
+    public GameObject[] targets;
 
+    private GameObject currentTarget;
     private float targetDistance;
+
+    private float nextFireTime = 0f;
+    public float fireRate = 0.5f;
 
     private void Start()
     {
         currentHealth = maxhealth;
+        currentTarget = targets[Random.Range(0, targets.Length)];
     }
 
     void Update()
     {
-        targetDistance = Vector2.Distance(transform.position, target.transform.position);
+        if (currentTarget == null || !currentTarget.activeSelf)
+        {
+            FindNewTarget();
+        }
+
+        targetDistance = Vector2.Distance(transform.position, currentTarget.transform.position);
         if (targetDistance < chaseDistance && targetDistance > stopDistance)
         {
             ChasePlayer();
@@ -28,6 +42,12 @@ public class Enemy : MonoBehaviour
         else
         {
             StopChasePlayer();
+        }
+
+        if (Time.time >= nextFireTime && inRange == true)
+        {
+            shootBullet();
+            nextFireTime = Time.time + fireRate;
         }
     }
 
@@ -41,12 +61,13 @@ public class Enemy : MonoBehaviour
 
     private void StopChasePlayer()
     {
-
+        inRange = true;
     }
 
     private void ChasePlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget.transform.position, speed * Time.deltaTime);
+        inRange = false;
         /*if (transform.position.x < target.transform.position.x)
         {
 
@@ -60,5 +81,23 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void FindNewTarget()
+    {
+        foreach ( GameObject potentialTarget in targets)
+        {
+            if (potentialTarget != null && potentialTarget.activeSelf)
+            {
+                currentTarget = potentialTarget;
+                break;
+            }
+        }
+    }
+
+    private void shootBullet()
+    {
+        var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
     }
 }
