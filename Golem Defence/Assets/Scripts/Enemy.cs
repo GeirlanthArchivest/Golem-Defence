@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
         {
             ResetRotation();
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D collisioninfo)
@@ -67,6 +68,10 @@ public class Enemy : MonoBehaviour
         if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Bullet"))
         {
             TakeDamage(PlayerMovement.damage);
+        }
+        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Player2Bullet"))
+        {
+            TakeDamage(Player2Movement.damage);
         }
     }
 

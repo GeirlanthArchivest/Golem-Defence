@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     public int runSpeed = 1;
     public int bulletSpeed;
@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public int maxHealth;
     public Healthbar Healthbar;
     public bool isRotated = false;
+
 
     float horizontal;
     float vertical;
@@ -34,39 +35,38 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal Arrow Keys");
-        vertical = Input.GetAxis("Vertical Arrow Keys");
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
 
-        if (horizontal < 0)
-        {
-            RotateObject(); // Rotate left
-        }
-        else if (horizontal > 0)
-        {
-            ResetRotation(); // Reset rotation
-        }
-
-        if (Time.time >= nextFireTime && isBlocking != true)
-        {
-            if (Input.GetKey(KeyCode.Keypad5))
+            if (horizontal < 0)
             {
-                shootBullet();
-                nextFireTime = Time.time + fireRate;
+                RotateObject(); // Rotate left
             }
-        }
+            else if (horizontal > 0)
+            {
+                ResetRotation(); // Reset rotation
+            }
 
-        if (Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            block.SetActive(true);
-            isBlocking = true;
-        }
+            if (Time.time >= nextFireTime && isBlocking != true)
+            {
+                if (Input.GetKey(KeyCode.J))
+                {
+                    shootBullet();
+                    nextFireTime = Time.time + fireRate;
+                }
+            }
 
-        else if (Input.GetKeyUp(KeyCode.Keypad6))
-        {
-            block.SetActive(false);
-            isBlocking = false;
-        }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                block.SetActive(true);
+                isBlocking = true;
+            }
 
+            else if (Input.GetKeyUp(KeyCode.L))
+            {
+                block.SetActive(false);
+                isBlocking = false;
+            }
 
         Healthbar.SetHealth(currentHealth);
 

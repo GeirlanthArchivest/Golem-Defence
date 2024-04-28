@@ -8,6 +8,7 @@ TagManager:
   - Player2
   - CameraBarrier
   - Enemy
+  - Player2Bullet
   layers:
   - Default
   - TransparentFX

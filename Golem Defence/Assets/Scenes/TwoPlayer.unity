@@ -414,7 +414,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3202272100959336385, guid: 8fbbcf6649274274ba083e594dcc65e2, type: 3}
   block: {fileID: 1651883458}
   isBlocking: 0
-  isPlayer1: 0
   currentHealth: 0
   maxHealth: 100
   Healthbar: {fileID: 2106816389}
@@ -491,7 +490,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &308339461
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796440223}
   - component: {fileID: 796440222}
+  - component: {fileID: 796440224}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -825,6 +825,33 @@ Transform:
   m_Father: {fileID: 1685877301}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &796440224
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796440221}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1082967957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1121,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3202272100959336385, guid: 3e4afebacd7305f4faa409a01876b5e5, type: 3}
   block: {fileID: 0}
   isBlocking: 0
-  isPlayer1: 0
   currentHealth: 0
   maxHealth: 0
   Healthbar: {fileID: 0}
@@ -1441,6 +1467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651883459}
   - component: {fileID: 1651883460}
+  - component: {fileID: 1651883461}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -1508,6 +1535,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09271145, y: 2.5209193}
   m_EdgeRadius: 0
+--- !u!50 &1651883461
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651883458}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1685877297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,7 +1572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685877301}
   - component: {fileID: 1685877300}
-  - component: {fileID: 1685877299}
+  - component: {fileID: 1685877303}
   - component: {fileID: 1685877298}
   - component: {fileID: 1685877302}
   m_Layer: 8
@@ -1573,30 +1627,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9956602}
   m_EdgeRadius: 0
---- !u!114 &1685877299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685877297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d3cb525b28b9f4fbbaff131cafddea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: 5
-  bulletSpeed: 10
-  shootingPoint: {fileID: 40828434}
-  bulletPrefab: {fileID: 3202272100959336385, guid: 8fbbcf6649274274ba083e594dcc65e2, type: 3}
-  block: {fileID: 796440221}
-  isBlocking: 0
-  isPlayer1: 0
-  currentHealth: 0
-  maxHealth: 100
-  Healthbar: {fileID: 1788772603}
-  isRotated: 0
-  fireRate: 0.5
 --- !u!212 &1685877300
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1692,7 +1722,30 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1685877303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685877297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a020885bd264fc04cbed1ba98a88b374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 5
+  bulletSpeed: 10
+  shootingPoint: {fileID: 40828434}
+  bulletPrefab: {fileID: 3202272100959336385, guid: 734f0d45baefc3a45ae754cb87386738, type: 3}
+  block: {fileID: 796440221}
+  isBlocking: 0
+  currentHealth: 0
+  maxHealth: 100
+  Healthbar: {fileID: 1788772603}
+  isRotated: 0
+  fireRate: 0.5
 --- !u!1 &1788772601
 GameObject:
   m_ObjectHideFlags: 0

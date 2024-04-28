@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4209787156450029645}
   - component: {fileID: 1373913791121624708}
   m_Layer: 0
-  m_Name: InvisBullet
-  m_TagString: Bullet
+  m_Name: Player2Bullet
+  m_TagString: Player2Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
