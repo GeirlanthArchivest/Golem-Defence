@@ -1042,7 +1042,7 @@ MonoBehaviour:
   targets:
   - {fileID: 269805816}
   - {fileID: 1685877297}
-  fireRate: 0.5
+  fireRate: 1
 --- !u!61 &1101188880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1749,7 +1749,9 @@ MonoBehaviour:
   maxHealth: 100
   Healthbar: {fileID: 1788772603}
   isRotated: 0
+  newTag: 
   fireRate: 0.5
+  slamRate: 0.5
 --- !u!1 &1788772601
 GameObject:
   m_ObjectHideFlags: 0
