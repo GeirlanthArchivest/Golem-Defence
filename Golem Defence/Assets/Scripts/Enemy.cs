@@ -68,11 +68,19 @@ public class Enemy : MonoBehaviour
     {
         if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Bullet"))
         {
-            TakeDamage(PlayerMovement.damage);
+            TakeDamage(PlayerMovement.punchDamage);
+        }
+        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("player1Slam"))
+        {
+            TakeDamage(PlayerMovement.slamDamage);
         }
         else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Player2Bullet"))
         {
-            TakeDamage(Player2Movement.damage);
+            TakeDamage(Player2Movement.punchDamage);
+        }
+        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("player2Slam"))
+        {
+            TakeDamage(PlayerMovement.slamDamage);
         }
     }
 

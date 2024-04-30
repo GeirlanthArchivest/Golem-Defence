@@ -418,7 +418,9 @@ MonoBehaviour:
   maxHealth: 100
   Healthbar: {fileID: 2106816389}
   isRotated: 0
+  newTag: 
   fireRate: 0.5
+  slamRate: 1.5
 --- !u!61 &269805820
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1125,7 +1127,9 @@ MonoBehaviour:
   maxHealth: 0
   Healthbar: {fileID: 0}
   isRotated: 0
+  newTag: 
   fireRate: 0.5
+  slamRate: 0.5
 --- !u!4 &1127800637
 Transform:
   m_ObjectHideFlags: 0

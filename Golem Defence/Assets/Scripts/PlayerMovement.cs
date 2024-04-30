@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public int runSpeed = 1;
     public int bulletSpeed;
-    public static int damage = 1;
+    public static int punchDamage = 1;
+    public static int slamDamage = 3;
     public Transform shootingPoint;
     public GameObject bulletPrefab;
     public GameObject block;
@@ -15,12 +16,15 @@ public class PlayerMovement : MonoBehaviour
     public int maxHealth;
     public Healthbar Healthbar;
     public bool isRotated = false;
+    public string newTag;
 
     float horizontal;
     float vertical;
 
     private float nextFireTime = 0f;
     public float fireRate = 0.5f;
+    private float nextSlamTime = 0f;
+    public float slamRate = 0.5f;
 
 
 
@@ -50,8 +54,19 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Keypad5))
             {
+                newTag = "Bullet";
                 shootBullet();
                 nextFireTime = Time.time + fireRate;
+            }
+        }
+
+        if (Time.time >= nextSlamTime && isBlocking != true)
+        {
+            if (Input.GetKey(KeyCode.Keypad8))
+            {
+                newTag = "player1Slam";
+                shootBullet();
+                nextSlamTime = Time.time + slamRate;
             }
         }
 
@@ -127,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
+        bullet.tag = newTag;
     }
 
     /*private void shootBullet2()

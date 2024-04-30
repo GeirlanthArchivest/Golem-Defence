@@ -6,7 +6,8 @@ public class Player2Movement : MonoBehaviour
 {
     public int runSpeed = 1;
     public int bulletSpeed;
-    public static int damage = 1;
+    public static int punchDamage = 1;
+    public static int slamDamage = 3;
     public Transform shootingPoint;
     public GameObject bulletPrefab;
     public GameObject block;
@@ -15,13 +16,15 @@ public class Player2Movement : MonoBehaviour
     public int maxHealth;
     public Healthbar Healthbar;
     public bool isRotated = false;
-
+    public string newTag;
 
     float horizontal;
     float vertical;
 
     private float nextFireTime = 0f;
     public float fireRate = 0.5f;
+    private float nextSlamTime = 0f;
+    public float slamRate = 0.5f;
 
 
 
@@ -35,38 +38,49 @@ public class Player2Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
-            if (horizontal < 0)
-            {
-                RotateObject(); // Rotate left
-            }
-            else if (horizontal > 0)
-            {
-                ResetRotation(); // Reset rotation
-            }
+        if (horizontal < 0)
+        {
+            RotateObject(); // Rotate left
+        }
+        else if (horizontal > 0)
+        {
+            ResetRotation(); // Reset rotation
+        }
 
-            if (Time.time >= nextFireTime && isBlocking != true)
+        if (Time.time >= nextFireTime && isBlocking != true)
+        {
+            if (Input.GetKey(KeyCode.Keypad5))
             {
-                if (Input.GetKey(KeyCode.J))
-                {
-                    shootBullet();
-                    nextFireTime = Time.time + fireRate;
-                }
+                newTag = "Player2Bullet";
+                shootBullet();
+                nextFireTime = Time.time + fireRate;
             }
+        }
 
-            if (Input.GetKeyDown(KeyCode.L))
+        if (Time.time >= nextSlamTime && isBlocking != true)
+        {
+            if (Input.GetKey(KeyCode.Keypad8))
             {
-                block.SetActive(true);
-                isBlocking = true;
+                newTag = "Player2Slam";
+                shootBullet();
+                nextSlamTime = Time.time + slamRate;
             }
+        }
 
-            else if (Input.GetKeyUp(KeyCode.L))
-            {
-                block.SetActive(false);
-                isBlocking = false;
-            }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            block.SetActive(true);
+            isBlocking = true;
+        }
+
+        else if (Input.GetKeyUp(KeyCode.L))
+        {
+            block.SetActive(false);
+            isBlocking = false;
+        }
 
         Healthbar.SetHealth(currentHealth);
 
