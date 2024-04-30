@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -116,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Healthbar.SetHealth(currentHealth);
             Destroy(gameObject);
+            EndGame("Menu");
         }
     }
 
@@ -148,6 +150,11 @@ public class PlayerMovement : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
         bullet.tag = newTag;
+    }
+
+    public void EndGame(string targetSceneName)
+    {
+        SceneManager.LoadScene(targetSceneName);
     }
 
     /*private void shootBullet2()

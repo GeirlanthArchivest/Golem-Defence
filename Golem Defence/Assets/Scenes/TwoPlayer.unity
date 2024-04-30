@@ -747,7 +747,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets:
   - {fileID: 269805818}
-  - {fileID: 1685877301}
   offset: {x: 0, y: 2, z: -10}
   smoothTime: 0.3
 --- !u!1 &796440221
@@ -1140,7 +1139,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3202272100959336385, guid: 0a68264313cce9a48b976f28a21c8b41, type: 3}
   targets:
   - {fileID: 269805816}
-  - {fileID: 1685877297}
   fireRate: 1
 --- !u!61 &1101188880
 BoxCollider2D:
@@ -1822,7 +1820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1685877298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2226,7 +2224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 829.9999, y: 427}
+  m_AnchoredPosition: {x: 890, y: 427}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1888830299
