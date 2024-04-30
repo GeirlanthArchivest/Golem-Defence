@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public Healthbar Healthbar;
     public bool isRotated = false;
     public string newTag;
+    public TextMeshProUGUI scoreText;
+    public static int score = 0;
 
     float horizontal;
     float vertical;
@@ -40,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal Arrow Keys");
         vertical = Input.GetAxis("Vertical Arrow Keys");
+
+        scoreText.text = "Score: " + score;
 
         if (horizontal < 0)
         {

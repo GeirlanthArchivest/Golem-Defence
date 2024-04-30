@@ -76,11 +76,11 @@ public class Enemy : MonoBehaviour
         }
         else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Player2Bullet"))
         {
-            TakeDamage(Player2Movement.punchDamage);
+            TakeDamage2(Player2Movement.punchDamage);
         }
         else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("player2Slam"))
         {
-            TakeDamage(PlayerMovement.slamDamage);
+            TakeDamage2(PlayerMovement.slamDamage);
         }
     }
 
@@ -104,6 +104,17 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            PlayerMovement.score += 10;
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage2(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Player2Movement.score += 10;
             Destroy(gameObject);
         }
     }

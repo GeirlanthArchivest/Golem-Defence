@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player2Movement : MonoBehaviour
@@ -17,6 +18,8 @@ public class Player2Movement : MonoBehaviour
     public Healthbar Healthbar;
     public bool isRotated = false;
     public string newTag;
+    public TextMeshProUGUI scoreText;
+    public static int score = 0;
 
     float horizontal;
     float vertical;
@@ -41,6 +44,9 @@ public class Player2Movement : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
+        scoreText.text = "Score: " + score;
+
+
         if (horizontal < 0)
         {
             RotateObject(); // Rotate left
@@ -52,7 +58,7 @@ public class Player2Movement : MonoBehaviour
 
         if (Time.time >= nextFireTime && isBlocking != true)
         {
-            if (Input.GetKey(KeyCode.Keypad5))
+            if (Input.GetKey(KeyCode.K))
             {
                 newTag = "Player2Bullet";
                 shootBullet();
@@ -62,7 +68,7 @@ public class Player2Movement : MonoBehaviour
 
         if (Time.time >= nextSlamTime && isBlocking != true)
         {
-            if (Input.GetKey(KeyCode.Keypad8))
+            if (Input.GetKey(KeyCode.O))
             {
                 newTag = "Player2Slam";
                 shootBullet();
