@@ -103,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collisioninfo)
     {
+        Debug.Log("Collision Detected!");
         if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("EnemyBullet"))
         {
             TakeDamage(Enemy.damage);
