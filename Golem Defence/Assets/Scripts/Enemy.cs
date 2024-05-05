@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public int bulletSpeed;
     public int maxhealth = 25;
-    public static int damage = 50;
+    public static int damage = 10;
     public float speed;
     public float chaseDistance;
     public float stopDistance;
@@ -126,6 +126,10 @@ public class Enemy : MonoBehaviour
             if (potentialTarget != null && potentialTarget.activeSelf)
             {
                 currentTarget = potentialTarget;
+                break;
+            }
+            if (potentialTarget == null)
+            {
                 break;
             }
         }

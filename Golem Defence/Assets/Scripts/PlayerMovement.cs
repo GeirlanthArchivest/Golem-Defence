@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isRotated = false;
     public string newTag;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
     public static int score = 0;
 
     float horizontal;
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         vertical = Input.GetAxis("Vertical Arrow Keys");
 
         scoreText.text = "Score: " + score;
+        finalScoreText.text = "Player 1 Score: " + score;
 
         if (horizontal < 0)
         {
@@ -117,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Healthbar.SetHealth(currentHealth);
             Destroy(gameObject);
-            EndGame("Menu");
+            //("Menu");
         }
     }
 
