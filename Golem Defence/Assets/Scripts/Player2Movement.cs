@@ -34,6 +34,7 @@ public class Player2Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         currentHealth = maxHealth;
         Healthbar.SetMaxHealth(maxHealth);
     }

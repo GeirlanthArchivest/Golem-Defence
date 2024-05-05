@@ -20,13 +20,13 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        /*Player1 = GameObject.FindWithTag("Player");
+        Player1 = GameObject.FindWithTag("Player");
         Player2 = GameObject.FindWithTag("Player2");
 
         if (Player1 == null && Player2 == null)
         {
-            Death();
-        }*/
+            LoadMenu("DeathScreen");
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -55,14 +55,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         pauseButton.Select();
-    }
-    void Death()
-    {
-        normalUI.SetActive(false);
-        deathUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-        deathButton.Select();
     }
     public void LoadMenu(string targetSceneName)
     {
