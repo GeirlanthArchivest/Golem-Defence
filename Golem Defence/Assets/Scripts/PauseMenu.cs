@@ -10,9 +10,10 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject normalUI;
-    public GameObject deathUI;
 
-    public Button deathButton;
+    private GameObject Boss;
+    private bool BossSpawned;
+
     public Button pauseButton;
 
     private GameObject Player1;
@@ -23,9 +24,20 @@ public class PauseMenu : MonoBehaviour
         Player1 = GameObject.FindWithTag("Player");
         Player2 = GameObject.FindWithTag("Player2");
 
+        Boss = GameObject.FindWithTag("Boss");
+        BossSpawned = EnemySpawner.bossSpawned;
+
         if (Player1 == null && Player2 == null)
         {
+            PlayerPrefs.SetInt("Player1Score", PlayerMovement.score);
+            PlayerPrefs.SetInt("Player1Score", Player2Movement.score);
             LoadMenu("DeathScreen");
+        }
+        else if (BossSpawned == true && Boss == null)
+        {
+            PlayerPrefs.SetInt("Player1Score", PlayerMovement.score);
+            PlayerPrefs.SetInt("Player1Score", Player2Movement.score);
+            LoadMenu("WinScreen");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

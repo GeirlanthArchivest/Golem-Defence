@@ -117,6 +117,10 @@ public class Player2Movement : MonoBehaviour
         {
             TakeDamage(Enemy.damage);
         }
+        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("BossBullet"))
+        {
+            TakeDamage(Boss.damage);
+        }
         else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Respawn"))
         {
             BossSpawn.SetActive(false);
@@ -129,7 +133,6 @@ public class Player2Movement : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            PlayerPrefs.SetInt("Player2Score", score);
             Healthbar.SetHealth(currentHealth);
             Destroy(gameObject);
         }
@@ -158,10 +161,4 @@ public class Player2Movement : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
     }
-
-    /*private void shootBullet2()
-    {
-        var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
-    }*/
 }

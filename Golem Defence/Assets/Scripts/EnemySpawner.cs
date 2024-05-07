@@ -14,14 +14,15 @@ public class EnemySpawner : MonoBehaviour
 
     public static bool bossSpawn = false;
 
-    public bool bossSpawned = false;
+    public static bool bossSpawned = false;
 
-    public int numberOfEnemies = 5;
+    public int numberOfEnemies = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0, 15);
+        bossSpawned = false;
+        //InvokeRepeating("SpawnEnemy", 0, 10);
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (bossSpawn == true && bossSpawned == false)
         {
-            bossSpawn = false;
+            bossSpawned = true;
             SpawnBoss();
         }
     }

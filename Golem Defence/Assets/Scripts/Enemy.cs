@@ -135,18 +135,16 @@ public class Enemy : MonoBehaviour
 
     private void FindNewTarget()
     {
-        foreach ( GameObject potentialTarget in targets)
+        foreach (GameObject potentialTarget in targets)
         {
             if (potentialTarget != null && potentialTarget.activeSelf)
             {
                 currentTarget = potentialTarget;
-                break;
-            }
-            if (potentialTarget == null)
-            {
-                break;
+                return; // Found a new target, exit the loop
             }
         }
+        // No active targets found
+        currentTarget = null;
     }
 
     void RotateObject()
