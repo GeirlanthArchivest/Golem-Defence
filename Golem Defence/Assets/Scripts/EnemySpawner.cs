@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         bossSpawned = false;
-        //InvokeRepeating("SpawnEnemy", 0, 10);
+        InvokeRepeating("SpawnEnemy", 0, 10);
     }
 
     // Update is called once per frame
