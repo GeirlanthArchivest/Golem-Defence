@@ -31,12 +31,14 @@ public class PauseMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("Player1Score", PlayerMovement.score);
             PlayerPrefs.SetInt("Player1Score", Player2Movement.score);
+            PlayerPrefs.SetFloat("TimeSpent", GameManager.currentTime);
             LoadMenu("DeathScreen");
         }
         else if (BossSpawned == true && Boss == null)
         {
             PlayerPrefs.SetInt("Player1Score", PlayerMovement.score);
             PlayerPrefs.SetInt("Player1Score", Player2Movement.score);
+            PlayerPrefs.SetFloat("TimeSpent", GameManager.currentTime);
             LoadMenu("WinScreen");
         }
 
