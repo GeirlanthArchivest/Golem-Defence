@@ -116,9 +116,9 @@ public class PlayerMovement : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            PlayerPrefs.SetInt("Player1Score", score);
             Healthbar.SetHealth(currentHealth);
             Destroy(gameObject);
-            //("Menu");
         }
     }
 
@@ -151,11 +151,6 @@ public class PlayerMovement : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
         bullet.tag = newTag;
-    }
-
-    public void EndGame(string targetSceneName)
-    {
-        SceneManager.LoadScene(targetSceneName);
     }
 
     /*private void shootBullet2()
