@@ -12,6 +12,8 @@ TagManager:
   - EnemyBullet
   - player1Slam
   - Player2Slam
+  - Boss
+  - BossBullet
   layers:
   - Default
   - TransparentFX

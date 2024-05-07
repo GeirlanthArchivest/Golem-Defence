@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     public int currentHealth;
     public int bulletSpeed;
     public int maxhealth = 25;
-    public static int damage = 10;
+    public static int damage = 25;
     public float speed;
     public float chaseDistance;
     public float stopDistance;
@@ -27,14 +27,6 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        if (gameObject.CompareTag("Boss"))
-        {
-            isBoss = true;
-        }
-        else
-        {
-            isBoss = false;
-        }
         currentHealth = maxhealth;
         currentTarget = targets[Random.Range(0, targets.Length)];
     }
@@ -118,7 +110,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            PlayerMovement.score += 10;
+            PlayerMovement.score += 50;
             Destroy(gameObject);
         }
     }
@@ -128,7 +120,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Player2Movement.score += 10;
+            Player2Movement.score += 50;
             Destroy(gameObject);
         }
     }

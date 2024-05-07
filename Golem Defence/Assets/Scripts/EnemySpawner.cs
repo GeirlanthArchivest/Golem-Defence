@@ -6,20 +6,32 @@ public class EnemySpawner : MonoBehaviour
 {
     public Transform[] spawnpoints;
 
+    public Transform bossSpawnPoint;
+
     public GameObject enemy;
+
+    public GameObject bossPrefab;
+
+    public static bool bossSpawn = false;
+
+    public bool bossSpawned = false;
 
     public int numberOfEnemies = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemy();
+        InvokeRepeating("SpawnEnemy", 0, 15);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (bossSpawn == true && bossSpawned == false)
+        {
+            bossSpawn = false;
+            SpawnBoss();
+        }
     }
 
     void SpawnEnemy()
@@ -40,5 +52,19 @@ public class EnemySpawner : MonoBehaviour
             }
         }    
         
+    }
+    void SpawnBoss()
+    {
+        GameObject Boss = Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
+
+        GameManager gameManager = GameManager.instance;
+        if (gameManager != null)
+        {
+            Boss enemyScript = Boss.GetComponent<Boss>(); // Accessing the component of the instantiated boss
+            if (enemyScript != null)
+            {
+                enemyScript.targets = gameManager.players;
+            }
+        }
     }
 }

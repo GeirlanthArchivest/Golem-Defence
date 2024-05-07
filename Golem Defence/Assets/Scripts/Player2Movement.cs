@@ -20,6 +20,8 @@ public class Player2Movement : MonoBehaviour
     public string newTag;
     public TextMeshProUGUI scoreText;
     public static int score = 0;
+    public GameObject BossSpawn;
+
 
     float horizontal;
     float vertical;
@@ -114,6 +116,11 @@ public class Player2Movement : MonoBehaviour
         if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("EnemyBullet"))
         {
             TakeDamage(Enemy.damage);
+        }
+        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Respawn"))
+        {
+            BossSpawn.SetActive(false);
+            EnemySpawner.bossSpawn = true;
         }
     }
 
