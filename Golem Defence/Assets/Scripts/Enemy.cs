@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage2(Player2Movement.punchDamage);
         }
-        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("player2Slam"))
+        else if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Player2Slam"))
         {
             TakeDamage2(PlayerMovement.slamDamage);
         }
