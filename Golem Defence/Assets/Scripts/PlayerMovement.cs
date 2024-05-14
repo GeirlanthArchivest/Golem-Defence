@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            PlayerPrefs.SetInt("Player1Score", score);
             Healthbar.SetHealth(currentHealth);
             Destroy(gameObject);
         }

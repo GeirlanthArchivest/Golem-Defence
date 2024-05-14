@@ -28,9 +28,7 @@ public class PauseMenu : MonoBehaviour
         BossSpawned = EnemySpawner.bossSpawned;
 
         if (Player1 == null && Player2 == null)
-        {
-            PlayerPrefs.SetInt("Player1Score", PlayerMovement.score);
-            PlayerPrefs.SetInt("Player1Score", Player2Movement.score);
+        {          
             PlayerPrefs.SetFloat("TimeSpent", GameManager.currentTime);
             LoadMenu("DeathScreen");
         }
