@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public static int score = 0;
     public GameObject BossSpawn;
+    public Animator animator;
 
     float horizontal;
     float vertical;
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Keypad5))
             {
+                animator.SetBool("Punching", true);
                 newTag = "Bullet";
                 shootBullet();
                 nextFireTime = Time.time + fireRate;
@@ -158,8 +160,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void shootBullet()
     {
+        animator.SetBool("Punching", true);
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
         bullet.tag = newTag;
+        StartCoroutine(ResetPunchAnimation());
     }
+
+        // Coroutine to reset the punching animation after a short delay
+        private IEnumerator ResetPunchAnimation()
+        {
+            // Wait for a short duration
+            yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
+
+            // Reset the punching animation
+            animator.SetBool("Punching", false);
+        }
 }

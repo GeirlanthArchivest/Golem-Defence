@@ -674,6 +674,7 @@ MonoBehaviour:
   newTag: 
   scoreText: {fileID: 1145782195}
   BossSpawn: {fileID: 1802018722}
+  animator: {fileID: 269805822}
   fireRate: 0.5
   slamRate: 1.5
 --- !u!61 &269805820
@@ -712,7 +713,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.73, y: 3.43}
+    oldSize: {x: 1.51, y: 3.44}
     newSize: {x: 1.51, y: 3.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
