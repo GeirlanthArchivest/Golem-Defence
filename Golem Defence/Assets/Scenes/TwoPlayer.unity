@@ -1220,7 +1220,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08960819, y: -0.76045895}
+  m_Offset: {x: -0.08960819, y: -0.7772114}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1231,7 +1231,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09271145, y: 2.5209193}
+  m_Size: {x: 0.09271145, y: 7.9152265}
   m_EdgeRadius: 0
 --- !u!4 &796440223
 Transform:
@@ -2755,7 +2755,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08960819, y: -0.76045895}
+  m_Offset: {x: -0.08960819, y: -0.8274689}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2766,7 +2766,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09271145, y: 2.5209193}
+  m_Size: {x: 0.09271145, y: 8.216772}
   m_EdgeRadius: 0
 --- !u!50 &1651883461
 Rigidbody2D:
@@ -3142,6 +3142,7 @@ MonoBehaviour:
   scoreText: {fileID: 1815871731}
   BossSpawn: {fileID: 1802018722}
   animator: {fileID: 1685877304}
+  anim: 
   fireRate: 0.5
   slamRate: 1.5
 --- !u!95 &1685877304
