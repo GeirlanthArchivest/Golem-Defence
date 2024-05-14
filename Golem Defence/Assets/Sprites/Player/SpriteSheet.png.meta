@@ -266,9 +266,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 299
-        y: 340
+        y: 339
         width: 139
-        height: 345
+        height: 346
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,7 +289,7 @@ TextureImporter:
         x: 547
         y: 339
         width: 217
-        height: 347
+        height: 346
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,6 +387,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 0
+        width: 125
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b1c4cfd5ae1774791a724be74f718d
+      internalID: -1013397095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -402,6 +423,7 @@ TextureImporter:
       SpriteSheet_1: 1915071010
       SpriteSheet_10: 78658507
       SpriteSheet_11: 385708105
+      SpriteSheet_12: -1013397095
       SpriteSheet_2: -578298555
       SpriteSheet_3: -833904179
       SpriteSheet_4: 151827001

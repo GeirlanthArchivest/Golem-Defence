@@ -22,6 +22,7 @@ public class Player2Movement : MonoBehaviour
     public static int score = 0;
     public GameObject BossSpawn;
     public Animator animator;
+    public string anim;
 
     float horizontal;
     float vertical;
@@ -73,6 +74,8 @@ public class Player2Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.K))
             {
+                animator.SetBool("Punching", true);
+                anim = "Punching";
                 newTag = "Player2Bullet";
                 shootBullet();
                 nextFireTime = Time.time + fireRate;
@@ -83,6 +86,8 @@ public class Player2Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.O))
             {
+                animator.SetBool("Slamming", true);
+                anim = "Slamming";
                 newTag = "Player2Slam";
                 shootBullet();
                 nextSlamTime = Time.time + slamRate;
@@ -91,12 +96,14 @@ public class Player2Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
+            animator.SetBool("Blocking", true);
             block.SetActive(true);
             isBlocking = true;
         }
 
         else if (Input.GetKeyUp(KeyCode.L))
         {
+            animator.SetBool("Blocking", false);
             block.SetActive(false);
             isBlocking = false;
         }
@@ -169,7 +176,6 @@ public class Player2Movement : MonoBehaviour
 
     private void shootBullet()
     {
-        animator.SetBool("Punching", true);
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
         bullet.tag = newTag;
@@ -183,6 +189,6 @@ public class Player2Movement : MonoBehaviour
         yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
 
         // Reset the punching animation
-        animator.SetBool("Punching", false);
+        animator.SetBool(anim, false);
     }
 }
