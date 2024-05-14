@@ -50,20 +50,30 @@ public class PlayerMovement : MonoBehaviour
 
         scoreText.text = "Score: " + score;
 
+
         if (horizontal < 0)
         {
+            animator.SetBool("Moving", true);
             RotateObject(); // Rotate left
         }
         else if (horizontal > 0)
         {
+            animator.SetBool("Moving", true);
             ResetRotation(); // Reset rotation
+        }
+        else if (vertical > 0 || vertical < 0)
+        {
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
         }
 
         if (Time.time >= nextFireTime && isBlocking != true)
         {
             if (Input.GetKey(KeyCode.Keypad5))
             {
-                animator.SetBool("Punching", true);
                 newTag = "Bullet";
                 shootBullet();
                 nextFireTime = Time.time + fireRate;
