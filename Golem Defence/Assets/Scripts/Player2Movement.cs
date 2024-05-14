@@ -21,7 +21,7 @@ public class Player2Movement : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public static int score = 0;
     public GameObject BossSpawn;
-
+    public Animator animator;
 
     float horizontal;
     float vertical;
@@ -52,11 +52,21 @@ public class Player2Movement : MonoBehaviour
 
         if (horizontal < 0)
         {
+            animator.SetBool("Moving", true);
             RotateObject(); // Rotate left
         }
         else if (horizontal > 0)
         {
+            animator.SetBool("Moving", true);
             ResetRotation(); // Reset rotation
+        }
+        else if (vertical > 0 || vertical < 0)
+        {
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
         }
 
         if (Time.time >= nextFireTime && isBlocking != true)
@@ -159,7 +169,20 @@ public class Player2Movement : MonoBehaviour
 
     private void shootBullet()
     {
+        animator.SetBool("Punching", true);
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
+        bullet.tag = newTag;
+        StartCoroutine(ResetPunchAnimation());
+    }
+
+    // Coroutine to reset the punching animation after a short delay
+    private IEnumerator ResetPunchAnimation()
+    {
+        // Wait for a short duration
+        yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
+
+        // Reset the punching animation
+        animator.SetBool("Punching", false);
     }
 }

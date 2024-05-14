@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -177,13 +176,13 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(ResetPunchAnimation());
     }
 
-        // Coroutine to reset the punching animation after a short delay
-        private IEnumerator ResetPunchAnimation()
-        {
-            // Wait for a short duration
-            yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
+    // Coroutine to reset the punching animation after a short delay
+    private IEnumerator ResetPunchAnimation()
+    {
+        // Wait for a short duration
+        yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
 
-            // Reset the punching animation
-            animator.SetBool("Punching", false);
-        }
+        // Reset the punching animation
+        animator.SetBool("Punching", false);
+    }
 }
