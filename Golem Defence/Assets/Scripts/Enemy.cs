@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject[] targets;
     public bool isBoss;
+    public Animator animator;
 
     private GameObject currentTarget;
     private float targetDistance;
@@ -101,12 +102,14 @@ public class Enemy : MonoBehaviour
     private void StopChasePlayer()
     {
         inRange = true;
+        animator.SetBool("Walking", false);
     }
 
     private void ChasePlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.transform.position, speed * Time.deltaTime);
         inRange = false;
+        animator.SetBool("Walking", true);
         /*if (transform.position.x < target.transform.position.x)
         {
 
