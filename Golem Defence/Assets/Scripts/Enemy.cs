@@ -170,7 +170,18 @@ public class Enemy : MonoBehaviour
 
     private void shootBullet()
     {
+        animator.SetBool("Punching", true);
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
+        StartCoroutine(ResetPunchAnimation());
+    }
+
+    private IEnumerator ResetPunchAnimation()
+    {
+        // Wait for a short duration
+        yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
+
+        // Reset the punching animation
+        animator.SetBool("Punching", false);
     }
 }
