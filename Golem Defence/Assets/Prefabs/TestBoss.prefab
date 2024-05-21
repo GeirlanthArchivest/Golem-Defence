@@ -136,7 +136,7 @@ MonoBehaviour:
   maxhealth: 25
   speed: 5
   chaseDistance: 1000
-  stopDistance: 2.4
+  stopDistance: 1
   inRange: 0
   shootingPoint: {fileID: 7113554099027458228}
   bulletPrefab: {fileID: 3202272100959336385, guid: e45e549d62e8725488f24136d7a885d8, type: 3}
