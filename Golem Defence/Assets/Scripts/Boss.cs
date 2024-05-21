@@ -17,6 +17,7 @@ public class Boss : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject[] targets;
     public bool isBoss;
+    public Animator animator;
 
     private GameObject currentTarget;
     private float targetDistance;
@@ -93,6 +94,7 @@ public class Boss : MonoBehaviour
 
     private void StopChasePlayer()
     {
+        animator.SetBool("Walking", false);
         inRange = true;
     }
 
@@ -100,6 +102,7 @@ public class Boss : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.transform.position, speed * Time.deltaTime);
         inRange = false;
+        animator.SetBool("Walking", true);
         /*if (transform.position.x < target.transform.position.x)
         {
 
@@ -160,7 +163,17 @@ public class Boss : MonoBehaviour
 
     private void shootBullet()
     {
+        animator.SetBool("Punching", true);
         var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
+        StartCoroutine(ResetPunchAnimation());
+    }
+    private IEnumerator ResetPunchAnimation()
+    {
+        // Wait for a short duration
+        yield return new WaitForSeconds(0.2f); // Adjust the duration as needed
+
+        // Reset the punching animation
+        animator.SetBool("Punching", false);
     }
 }
