@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
     public int currentHealth;
     public int bulletSpeed;
     public int maxhealth = 25;
-    public static int damage = 25;
+    public static int damage = 20;
     public float speed;
     public float chaseDistance;
     public float stopDistance;
