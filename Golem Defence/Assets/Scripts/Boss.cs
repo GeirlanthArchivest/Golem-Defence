@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class Boss : MonoBehaviour
 {
+    // Boss attributes
     public int currentHealth;
     public int bulletSpeed;
     public int maxhealth = 25;
@@ -16,25 +16,26 @@ public class Boss : MonoBehaviour
     public Transform shootingPoint;
     public GameObject bulletPrefab;
     public GameObject[] targets;
-    public bool isBoss;
     public Animator animator;
 
+    // Internal variables
     private GameObject currentTarget;
     private float targetDistance;
-
     private float nextFireTime = 0f;
     public float fireRate = 0.5f;
-
     private bool isRotated = false;
 
+    // Start is called before the first frame update
     private void Start()
     {
         currentHealth = maxhealth;
         currentTarget = targets[Random.Range(0, targets.Length)];
     }
 
+    // Update is called once per frame
     void Update()
     {
+        // Check if the current target is valid
         if (currentTarget == null || !currentTarget.activeSelf)
         {
             FindNewTarget();
@@ -45,7 +46,10 @@ public class Boss : MonoBehaviour
             }
         }
 
+        // Calculate the distance between the boss and its target
         targetDistance = Vector2.Distance(transform.position, currentTarget.transform.position);
+
+        // Check if the target is within chase distance
         if (targetDistance < chaseDistance && targetDistance > stopDistance)
         {
             ChasePlayer();
@@ -55,12 +59,14 @@ public class Boss : MonoBehaviour
             StopChasePlayer();
         }
 
+        // Check if it's time to fire a bullet
         if (Time.time >= nextFireTime && inRange == true)
         {
             shootBullet();
             nextFireTime = Time.time + fireRate;
         }
 
+        // Rotate the boss if needed
         if (targetDistance > stopDistance && currentTarget.transform.position.x < transform.position.x)
         {
             RotateObject();
@@ -69,9 +75,9 @@ public class Boss : MonoBehaviour
         {
             ResetRotation();
         }
-
     }
 
+    // Handle collision with player attacks
     void OnCollisionEnter2D(Collision2D collisioninfo)
     {
         if (collisioninfo.collider != null && collisioninfo.collider.CompareTag("Bullet"))
@@ -92,23 +98,22 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Method to stop chasing the player
     private void StopChasePlayer()
     {
         animator.SetBool("Walking", false);
         inRange = true;
     }
 
+    // Method to chase the player
     private void ChasePlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.transform.position, speed * Time.deltaTime);
         inRange = false;
         animator.SetBool("Walking", true);
-        /*if (transform.position.x < target.transform.position.x)
-        {
-
-        }*/
     }
 
+    // Method to take damage from player 1
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -119,6 +124,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Method to take damage from player 2
     public void TakeDamage2(int damage)
     {
         currentHealth -= damage;
@@ -129,6 +135,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Method to find a new target (player)
     private void FindNewTarget()
     {
         foreach (GameObject potentialTarget in targets)
@@ -143,6 +150,7 @@ public class Boss : MonoBehaviour
         currentTarget = null;
     }
 
+    // Method to rotate the boss
     void RotateObject()
     {
         if (!isRotated)
@@ -152,6 +160,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Method to reset the boss rotation
     void ResetRotation()
     {
         if (isRotated)
@@ -161,6 +170,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+    // Method to make the boss shoot a bullet
     private void shootBullet()
     {
         animator.SetBool("Punching", true);
@@ -168,6 +178,8 @@ public class Boss : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = shootingPoint.right * bulletSpeed;
         StartCoroutine(ResetPunchAnimation());
     }
+
+    // Coroutine to reset the punching animation after a short delay
     private IEnumerator ResetPunchAnimation()
     {
         // Wait for a short duration
@@ -177,3 +189,4 @@ public class Boss : MonoBehaviour
         animator.SetBool("Punching", false);
     }
 }
+
