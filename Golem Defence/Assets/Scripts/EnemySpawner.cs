@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
         {
             bossSpawned = true;
             SpawnBoss(); // Spawn the boss
+            this.enabled = false;
         }
     }
 
